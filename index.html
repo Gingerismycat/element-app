@@ -284,6 +284,28 @@
             background-clip: padding-box;
         }
 
+        .dashboard-card.leaderboardtitle {
+            display: flex;
+            flex-direction: column;
+            border: 6px solid #000000;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            background-clip: padding-box;
+        }
+        .dashboard-card.leaderboardranks {
+            display: flex;
+            flex-direction: column;
+            border: 4px solid #9ed0ff;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            background-clip: padding-box;
+        }
         .dashboard-card.gas {
             display: flex;
             flex-direction: column;
@@ -425,6 +447,116 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
             z-index: 10;
         }
+
+        .leaderboard-card {
+            border: 6px solid #000;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .leaderboard-card-body {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .leaderboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .leaderboard-label {
+            font-size: 0.85rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .leaderboard-title {
+            font-size: 1.75rem;
+            letter-spacing: 0.03em;
+            margin: 0;
+        }
+
+        .leaderboard-filters {
+            display: inline-flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .leaderboard-filter {
+            color: #000;
+            text-decoration: none;
+            padding: 0.35rem 0.75rem;
+            border: 2px solid #000;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: background 200ms ease, color 200ms ease;
+        }
+
+        .leaderboard-filter.active,
+        .leaderboard-filter:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .leaderboard-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border: 4px solid #000;
+            border-radius: 999px;
+            background: #fff;
+        }
+
+        .leaderboard-rank {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .rank-number {
+            font-weight: 700;
+            min-width: 2rem;
+        }
+
+        .rank-icon {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border: 3px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .rank-label {
+            font-weight: 700;
+        }
+
+        .rank-score {
+            font-weight: 700;
+            min-width: 4rem;
+            text-align: right;
+        }
+
+        .leaderboard-see-more {
+            text-align: center;
+            margin: 1.25rem 0 0;
+            font-weight: 700;
+            cursor: pointer;
+        }
     </style>
     <meta charset="utf-8">
 </head>
@@ -446,11 +578,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="topNavbar" style="height: 100%;">
                         <div class="navbar-nav align-items-center gap-3" style="height: 100%;">
-                            <a class="nav-link" href="#">Dashboard</a>
-                            <a class="nav-link" href="#">Community</a>
-                            <a class="nav-link" href="#">Simulation</a>
-                            <a class="nav-link" href="#">AI Tips</a>
-                            <a class="nav-link btn btn-outline-dark rounded-pill px-4" href="">Log In</a>
+                            <a class="nav-link" data-target="index" href="#index">Dashboard</a>
+                            <a class="nav-link" data-target="community" href="#community">Community</a>
+                            <a class="nav-link" data-target="simulation" href="#simulation">Simulation</a>
+                            <a class="nav-link btn btn-outline-secondary rounded-pill px-4" data-target="login" href="#login">Log In</a>
                         </div>
                     </div>
                 </div>
@@ -458,155 +589,249 @@
         </div>
 
 
-        
-        <div id="index" class="container px-0">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 gx-5 gy-5">
-                <div class="col">
-                    <div class="card dashboard-card water h-100 shadow-sm">
-                        <img src="assets/water-normal.png" class="card-img-top" alt="Water">
-                        <div class="card-body">
-                            <h5 class="card-title">Water</h5>
-                            <p class="card-text mb-0">Track water usage and key consumption categories across your home.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card water h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Usage Breakdown</h5>
-                            <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                <li>Showers — 40%</li>
-                                <li>Toilets — 30%</li>
-                                <li>Kitchen — 25%</li>
-                                <li>Faucet — 5%</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card water h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">This Month</h5>
-                            <p class="mb-2">120,000 Gallons</p>
-                            <p class="mb-1">Estimated Bill: <strong>$78</strong></p>
-                            <p class="mb-0 text-muted">12% from last month</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card water h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Conservation Goals</h5>
-                            <p class="mb-2">Monthly Target: <strong>4,000 gal</strong></p>
-                            <p class="mb-0">680 Gallons Remaining</p>
-                            <div class="goal-bar">
-                                <div class="goal-fill-water" style="width: 72%;"></div>
+        <div id="page-content">
+            <div data-page="index" class="container px-0">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 gx-5 gy-5">
+                    <div class="col">
+                        <div class="card dashboard-card water h-100 shadow-sm">
+                            <img src="assets/water-normal.png" class="card-img-top" alt="Water">
+                            <div class="card-body">
+                                <h5 class="card-title">Water</h5>
+                                <p class="card-text mb-0">Track water usage and key consumption categories across your
+                                    home.
+                                </p>
                             </div>
-                            <p class="goal-label mb-0">Progress toward goal</p>
-                            <p class="progress-meta mb-0">72% complete</p>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card electricity h-100 shadow-sm">
-                        <img src="assets/lightning-normal.png" class="card-img-top" alt="Electricity">
-                        <div class="card-body">
-                            <h5 class="card-title">Electricity</h5>
-                            <p class="card-text mb-0">Monitor power usage and billing for your household energy needs.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card electricity h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Usage Breakdown</h5>
-                            <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                <li>AC — 50%</li>
-                                <li>Lighting — 22%</li>
-                                <li>Electronics — 20%</li>
-                                <li>Other — 8%</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card electricity h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">This Month</h5>
-                            <p class="mb-2">842 kWh</p>
-                            <p class="mb-1">Estimated Bill: <strong>$126.40</strong></p>
-                            <p class="mb-0 text-muted">8% from last month</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card electricity h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Conservation Goals</h5>
-                            <p class="mb-2">Monthly Target: <strong>740 kWh</strong></p>
-                            <p class="mb-0">194 kWh Remaining</p>
-                            <div class="goal-bar">
-                                <div class="goal-fill-electricity" style="width: 62%;"></div>
+                    <div class="col">
+                        <div class="card dashboard-card water h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Usage Breakdown</h5>
+                                <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                    <li>Showers — 40%</li>
+                                    <li>Toilets — 30%</li>
+                                    <li>Kitchen — 25%</li>
+                                    <li>Faucet — 5%</li>
+                                </ul>
                             </div>
-                            <p class="goal-label mb-0">Progress toward goal</p>
-                            <p class="progress-meta mb-0">62% complete</p>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card gas h-100 shadow-sm">
-                        <img src="assets/cloud-normal.png" class="card-img-top" alt="Gas">
-                        <div class="card-body">
-                            <h5 class="card-title">Gas</h5>
-                            <p class="card-text mb-0">Keep gas usage and costs visible for your home appliances.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card gas h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Usage Breakdown</h5>
-                            <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                <li>Furnace</li>
-                                <li>Stove/Oven</li>
-                                <li>Water Heater</li>
-                                <li>Gas Dryer</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card gas h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">This Month</h5>
-                            <p class="mb-2">445 Therms</p>
-                            <p class="mb-1">Estimated Bill: <strong>$68.42</strong></p>
-                            <p class="mb-0 text-muted">5% from last month</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card dashboard-card gas h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Conservation Goals</h5>
-                            <p class="mb-2">Monthly Target: <strong>87 therms</strong></p>
-                            <p class="mb-0">45 therms Remaining</p>
-                            <div class="goal-bar">
-                                <div class="goal-fill-gas" style="width: 48%;"></div>
+                    <div class="col">
+                        <div class="card dashboard-card water h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">This Month</h5>
+                                <p class="mb-2">120,000 Gallons</p>
+                                <p class="mb-1">Estimated Bill: <strong>$78</strong></p>
+                                <p class="mb-0 text-muted">12% from last month</p>
                             </div>
-                            <p class="goal-label mb-0">Progress toward goal</p>
-                            <p class="progress-meta mb-0">48% complete</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card water h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Conservation Goals</h5>
+                                <p class="mb-2">Monthly Target: <strong>4,000 gal</strong></p>
+                                <p class="mb-0">680 Gallons Remaining</p>
+                                <div class="goal-bar">
+                                    <div class="goal-fill-water" style="width: 72%;"></div>
+                                </div>
+                                <p class="goal-label mb-0">Progress toward goal</p>
+                                <p class="progress-meta mb-0">72% complete</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card electricity h-100 shadow-sm">
+                            <img src="assets/lightning-normal.png" class="card-img-top" alt="Electricity">
+                            <div class="card-body">
+                                <h5 class="card-title">Electricity</h5>
+                                <p class="card-text mb-0">Monitor power usage and billing for your household energy
+                                    needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card electricity h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Usage Breakdown</h5>
+                                <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                    <li>AC — 50%</li>
+                                    <li>Lighting — 22%</li>
+                                    <li>Electronics — 20%</li>
+                                    <li>Other — 8%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card electricity h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">This Month</h5>
+                                <p class="mb-2">842 kWh</p>
+                                <p class="mb-1">Estimated Bill: <strong>$126.40</strong></p>
+                                <p class="mb-0 text-muted">8% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card electricity h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Conservation Goals</h5>
+                                <p class="mb-2">Monthly Target: <strong>740 kWh</strong></p>
+                                <p class="mb-0">194 kWh Remaining</p>
+                                <div class="goal-bar">
+                                    <div class="goal-fill-electricity" style="width: 62%;"></div>
+                                </div>
+                                <p class="goal-label mb-0">Progress toward goal</p>
+                                <p class="progress-meta mb-0">62% complete</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card gas h-100 shadow-sm">
+                            <img src="assets/cloud-normal.png" class="card-img-top" alt="Gas">
+                            <div class="card-body">
+                                <h5 class="card-title">Gas</h5>
+                                <p class="card-text mb-0">Keep gas usage and costs visible for your home appliances.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card gas h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Usage Breakdown</h5>
+                                <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                    <li>Furnace</li>
+                                    <li>Stove/Oven</li>
+                                    <li>Water Heater</li>
+                                    <li>Gas Dryer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card gas h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">This Month</h5>
+                                <p class="mb-2">445 Therms</p>
+                                <p class="mb-1">Estimated Bill: <strong>$68.42</strong></p>
+                                <p class="mb-0 text-muted">5% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card dashboard-card gas h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Conservation Goals</h5>
+                                <p class="mb-2">Monthly Target: <strong>87 therms</strong></p>
+                                <p class="mb-0">45 therms Remaining</p>
+                                <div class="goal-bar">
+                                    <div class="goal-fill-gas" style="width: 48%;"></div>
+                                </div>
+                                <p class="goal-label mb-0">Progress toward goal</p>
+                                <p class="progress-meta mb-0">48% complete</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+        <div data-page="community" class="container px-0" style="display:none">
+            <div class="card dashboard-card leaderboard-card shadow-sm">
+                <div class="card-body leaderboard-card-body">
+                    <div class="leaderboard-header">
+                        <div>
+                            <p class="leaderboard-label mb-1">City: Houston, Tx</p>
+                            <h5 class="card-title leaderboard-title mb-0">Utilities Leaderboard</h5>
+                        </div>
+                        <div class="leaderboard-filters">
+                            <a href="#" class="leaderboard-filter active" data-filter="total">Total</a>
+                            <a href="#" class="leaderboard-filter" data-filter="water">Water</a>
+                            <a href="#" class="leaderboard-filter" data-filter="electricity">Electricity</a>
+                            <a href="#" class="leaderboard-filter" data-filter="gas">Gas</a>
+                        </div>
+                    </div>
+                    <ul class="leaderboard-list">
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">1)</span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-label">User #1</span>
+                            </div>
+                            <span class="rank-score">30 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">2)</span>
+                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity" width="22" height="22"></span>
+                                <span class="rank-label">User #2</span>
+                            </div>
+                            <span class="rank-score">28 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">3)</span>
+                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22" height="22"></span>
+                                <span class="rank-label">User #3</span>
+                            </div>
+                            <span class="rank-score">25 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">4)</span>
+                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22" height="22"></span>
+                                <span class="rank-label">User #4</span>
+                            </div>
+                            <span class="rank-score">24 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">5)</span>
+                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity" width="22" height="22"></span>
+                                <span class="rank-label">User #5</span>
+                            </div>
+                            <span class="rank-score">22 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">6)</span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-label">User #6</span>
+                            </div>
+                            <span class="rank-score">20 pt</span>
+                        </li>
+                        <li class="leaderboard-item">
+                            <div class="leaderboard-rank">
+                                <span class="rank-number">7)</span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-label">User #7</span>
+                            </div>
+                            <span class="rank-score">17 pt</span>
+                        </li>
+                    </ul>
+                    <p class="leaderboard-see-more">See More</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-W6q/7H4fJwTlaBDFKkkV7j5fD1K3lF7QJjZ0JfY9aeOa+9Y7bDQwMxGFaN8KI2AZ"
         crossorigin="anonymous"></script>
+    <script src="transition.js" defer></script>
 </body>
 
 </html>

@@ -295,6 +295,7 @@
             overflow: hidden;
             background-clip: padding-box;
         }
+
         .dashboard-card.leaderboardranks {
             display: flex;
             flex-direction: column;
@@ -306,6 +307,31 @@
             overflow: hidden;
             background-clip: padding-box;
         }
+
+        .dashboard-card.login {
+            display: flex;
+            flex-direction: column;
+            border: 6px solid #000000;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            background-clip: padding-box;
+            max-width: 420px;
+            width: min(100%, 420px);
+            margin: 0 auto;
+        }
+
+        .dashboard-card.login .card-body {
+            flex: 1;
+            padding: 5rem;
+            width: 100%;
+            font-family: "Space Mono", "Courier New", Courier, monospace;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
         .dashboard-card.gas {
             display: flex;
             flex-direction: column;
@@ -355,7 +381,7 @@
 
         .dashboard-card .card-img-top {
             box-sizing: border-box;
-            width: 100%;
+            width: 50%;
             max-height: 180px;
             display: block;
             margin: 0 auto;
@@ -581,7 +607,8 @@
                             <a class="nav-link" data-target="index" href="#index">Dashboard</a>
                             <a class="nav-link" data-target="community" href="#community">Community</a>
                             <a class="nav-link" data-target="simulation" href="#simulation">Simulation</a>
-                            <a class="nav-link btn btn-outline-secondary rounded-pill px-4" data-target="login" href="#login">Log In</a>
+                            <a class="nav-link btn btn-outline-secondary rounded-pill px-4" data-target="login"
+                                href="#login">Log In</a>
                         </div>
                     </div>
                 </div>
@@ -762,7 +789,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">1)</span>
-                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22"
+                                        height="22"></span>
                                 <span class="rank-label">User #1</span>
                             </div>
                             <span class="rank-score">30 pt</span>
@@ -770,7 +798,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">2)</span>
-                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity"
+                                        width="22" height="22"></span>
                                 <span class="rank-label">User #2</span>
                             </div>
                             <span class="rank-score">28 pt</span>
@@ -778,7 +807,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">3)</span>
-                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22"
+                                        height="22"></span>
                                 <span class="rank-label">User #3</span>
                             </div>
                             <span class="rank-score">25 pt</span>
@@ -786,7 +816,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">4)</span>
-                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/cloud-profile.svg" alt="gas" width="22"
+                                        height="22"></span>
                                 <span class="rank-label">User #4</span>
                             </div>
                             <span class="rank-score">24 pt</span>
@@ -794,7 +825,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">5)</span>
-                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/electric-profile.svg" alt="electricity"
+                                        width="22" height="22"></span>
                                 <span class="rank-label">User #5</span>
                             </div>
                             <span class="rank-score">22 pt</span>
@@ -802,7 +834,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">6)</span>
-                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22"
+                                        height="22"></span>
                                 <span class="rank-label">User #6</span>
                             </div>
                             <span class="rank-score">20 pt</span>
@@ -810,7 +843,8 @@
                         <li class="leaderboard-item">
                             <div class="leaderboard-rank">
                                 <span class="rank-number">7)</span>
-                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22" height="22"></span>
+                                <span class="rank-icon"><img src="assets/water-profile.svg" alt="water" width="22"
+                                        height="22"></span>
                                 <span class="rank-label">User #7</span>
                             </div>
                             <span class="rank-score">17 pt</span>
@@ -821,6 +855,23 @@
             </div>
         </div>
 
+        <div data-page="login" class="container px-0" style="display:none">
+            <div class="card dashboard-card login h-100 shadow-sm">
+                <div class="card-body">
+                    <img src="assets/logo.svg" class="card-img" alt="logo">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="passwordInput" placeholder="Password"
+                            aria-label="Password">
+                    </div>
+                    <button class="btn btn-dark" type="button" onclick="location.hash='index'">Log In</button>
+                    <p class="leaderboard-see-more">Forgot password?</p>
+                </div>
+            </div>
+        </div>
 
 
 

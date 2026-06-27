@@ -1,0 +1,24 @@
+.navbar.custom-navbar {
+  background-color: #ffffff !important;
+  border-bottom: 6px solid #000000 !important;
+}
+
+.goal-bar {
+  height: 10px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 10px 0;
+}
+
+.goal-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  transition: width 600ms cubic-bezier(.2,.9,.3,1);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset;
+}
+
+.goal-label { color: #222; font-size: 0.9rem; }
+
+.progress-meta { color: #333; font-size: 0.85rem; }

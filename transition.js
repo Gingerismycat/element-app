@@ -73,6 +73,66 @@ function attachLeaderboardFilters() {
     });
 }
 
+function attachMeterControls() {
+    document.querySelectorAll('.simulation-card-icon').forEach(icon => {
+        const notch = icon.querySelector('.meter-notch');
+        const card = icon.closest('.simulation-card');
+        const resource = card?.dataset.resource;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let startAngle = 0;
+
+        const updateRotation = angle => {
+            if (notch) {
+                notch.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+            }
+        };
+
+        const clampAngle = angle => Math.max(-90, Math.min(90, angle));
+
+        const beginDrag = event => {
+            event.preventDefault();
+            isDragging = true;
+            startX = event.type === 'touchstart' ? event.touches[0].clientX : event.clientX;
+            startY = event.type === 'touchstart' ? event.touches[0].clientY : event.clientY;
+            startAngle = window.simulation?.state[resource]?.angle || 0;
+            icon.classList.add('dragging');
+        };
+
+        const moveDrag = event => {
+            if (!isDragging) return;
+            if (event.cancelable) {
+                event.preventDefault();
+            }
+            const currentX = event.type === 'touchmove' ? event.touches[0].clientX : event.clientX;
+            const currentY = event.type === 'touchmove' ? event.touches[0].clientY : event.clientY;
+            const deltaX = currentX - startX;
+            const deltaY = startY - currentY;
+            const deltaAngle = (deltaX + deltaY) / 2;
+            const nextAngle = clampAngle(startAngle + deltaAngle);
+            if (resource && window.simulation) {
+                window.simulation.setSimulationAngle(resource, nextAngle);
+                window.simulation.updateSimulationCard(resource);
+                updateRotation(nextAngle);
+            }
+        };
+
+        const endDrag = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            icon.classList.remove('dragging');
+        };
+
+        icon.addEventListener('mousedown', beginDrag);
+        icon.addEventListener('touchstart', beginDrag, { passive: true });
+        window.addEventListener('mousemove', moveDrag);
+        window.addEventListener('touchmove', moveDrag, { passive: false });
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
+    });
+}
+
 function router() {
     const page = location.hash.replace('#', '') || 'index';
     const content = document.getElementById('page-content');
@@ -100,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     attachLeaderboardFilters();
+    attachMeterControls();
+    window.simulation?.updateAllSimulationCards();
     renderLeaderboard('total');
 });
 

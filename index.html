@@ -583,6 +583,203 @@
             font-weight: 700;
             cursor: pointer;
         }
+
+        .simulation-page {
+            display: grid;
+            gap: 1.5rem;
+            padding: 1rem 0 2rem;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .simulation-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            border: 6px solid #000;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .simulation-card-icon {
+            width: 200px;
+            min-width: 160px;
+            min-height: 160px;
+            position: relative;
+            display: grid;
+            place-items: center;
+            border: 4px solid #000;
+            border-radius: 32px;
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow: visible;
+        }
+
+        .simulation-card-icon img {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .simulation-card-icon {
+            touch-action: none;
+        }
+
+        .meter-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .meter-notch {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: auto;
+            pointer-events: none;
+            filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+        }
+
+        .meter-sprite {
+            position: absolute;
+            left: -300px;
+            top: 0%;
+            width: 72px;
+            height: auto;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatAround 4.5s ease-in-out infinite;
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(-4px, -8px);
+            }
+            50% {
+                transform: translate(2px, 6px);
+            }
+            75% {
+                transform: translate(-2px, 8px);
+            }
+        }
+
+        .simulation-card-icon.water .meter-notch {
+            width: 140px;
+        }
+
+        .simulation-card-icon.electricity .meter-notch {
+            width: 140px;
+        }
+
+        .simulation-card-icon.gas .meter-notch {
+            width: 140px;
+        }
+
+        .simulation-card-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 240px;
+            gap: 1.5rem;
+            min-width: 260px;
+            align-items: start;
+        }
+
+        .simulation-card-info {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .simulation-card-metric {
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .simulation-card {
+            position: relative;
+            overflow: visible;
+            font-family: "Space Mono", "Courier New", Courier, monospace;
+        }
+
+        .simulation-card-summary {
+            display: grid;
+            gap: 0.45rem;
+            justify-self: end;
+            text-align: left;
+            min-width: 180px;
+            font-family: "Space Mono", "Courier New", Courier, monospace;
+        }
+
+        .simulation-card-summary p {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #222;
+            line-height: 1.4;
+        }
+
+        .simulation-card-summary p span:first-child {
+            color: #444;
+            font-weight: 700;
+            text-transform: none;
+        }
+
+        .simulation-card-summary strong {
+            font-weight: 700;
+        }
+
+        .simulation-card-summary-label {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #222;
+        }
+
+        .simulation-card-label {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #222;
+        }
+
+        .simulation-card-value {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f6f44;
+            line-height: 1;
+        }
+
+        .simulation-card-meta {
+            display: grid;
+            gap: 0.35rem;
+            font-size: 0.92rem;
+            color: #222;
+            line-height: 1.4;
+        }
+
+        .simulation-card-meta strong {
+            font-weight: 700;
+        }
     </style>
     <meta charset="utf-8">
 </head>
@@ -729,10 +926,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">Usage Breakdown</h5>
                                 <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                    <li>Furnace</li>
-                                    <li>Stove/Oven</li>
-                                    <li>Water Heater</li>
-                                    <li>Gas Dryer</li>
+                                    <li>Furnace — 68%</li>
+                                    <li>Stove/Oven — 12%</li>
+                                    <li>Water Heater — 15%</li>
+                                    <li>Gas Dryer — 5%</li>
                                 </ul>
                             </div>
                         </div>
@@ -872,17 +1069,96 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
+        
+        <div data-page="simulation" class="container px-0" style="display:none">
+            <div class="simulation-page">
+                <div class="simulation-card" data-resource="water">
+                    <div class="simulation-card-icon water">
+                        <img class="meter-base" src="assets/water-meter.svg" alt="Water meter">
+                        <img class="meter-sprite" src="assets/water-normal.png" alt="Water sprite" aria-hidden="true">
+                        <img class="meter-notch" src="assets/water-notch.svg" alt="" aria-hidden="true">
+                    </div>
+                    <div class="simulation-card-body">
+                        <div class="simulation-card-info">
+                            <div>
+                                <p class="simulation-card-label">Water</p>
+                                <p class="simulation-card-value" data-value="usage">4,000 gallons</p>
+                            </div>
+                            <div class="simulation-card-metric">
+                                <p class="simulation-card-label">Estimated Cost</p>
+                                <p class="simulation-card-value" data-value="cost">$123.22</p>
+                            </div>
+                        </div>
+                        <div class="simulation-card-summary">
+                            <p class="simulation-card-summary-label">SIMULATED USAGE</p>
+                            <p><span>Current Bill (estimate)</span><strong data-value="bill">$110.22</strong></p>
+                            <p><span>Current Usage</span><strong data-value="currentUsage">3,120 gallons</strong></p>
+                            <p><span>Projected Usage</span><strong data-value="projected">+8%</strong></p>
+                            <p><span data-value="savingsLabel">Money Saved</span><strong data-value="savings">$0.00</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="simulation-card" data-resource="electricity">
+                    <div class="simulation-card-icon electricity">
+                        <img class="meter-base" src="assets/electricity-meter.svg" alt="Electricity meter">
+                        <img class="meter-sprite" src="assets/lightning-normal.png" alt="Electricity sprite" aria-hidden="true">
+                        <img class="meter-notch" src="assets/electricity-notch.svg" alt="" aria-hidden="true">
+                    </div>
+                    <div class="simulation-card-body">
+                        <div class="simulation-card-info">
+                            <div>
+                                <p class="simulation-card-label">Electricity</p>
+                                <p class="simulation-card-value" data-value="usage">892 kWh</p>
+                            </div>
+                            <div class="simulation-card-metric">
+                                <p class="simulation-card-label">Estimated Cost</p>
+                                <p class="simulation-card-value" data-value="cost">$138.26</p>
+                            </div>
+                        </div>
+                        <div class="simulation-card-summary">
+                            <p class="simulation-card-summary-label">SIMULATED USAGE</p>
+                            <p><span>Current Bill (estimate)</span><strong data-value="bill">$124.91</strong></p>
+                            <p><span>Current Usage</span><strong data-value="currentUsage">855 kWh</strong></p>
+                            <p><span>Projected Usage</span><strong data-value="projected">+6.1%</strong></p>
+                            <p><span data-value="savingsLabel">Money Saved</span><strong data-value="savings">$0.00</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="simulation-card" data-resource="gas">
+                    <div class="simulation-card-icon gas">
+                        <img class="meter-base" src="assets/cloud-meter.svg" alt="Gas meter">
+                        <img class="meter-sprite" src="assets/cloud-normal.png" alt="Gas sprite" aria-hidden="true">
+                        <img class="meter-notch" src="assets/cloud-notch.svg" alt="" aria-hidden="true">
+                    </div>
+                    <div class="simulation-card-body">
+                        <div class="simulation-card-info">
+                            <div>
+                                <p class="simulation-card-label">Gas</p>
+                                <p class="simulation-card-value" data-value="usage">48 therms</p>
+                            </div>
+                            <div class="simulation-card-metric">
+                                <p class="simulation-card-label">Estimated Cost</p>
+                                <p class="simulation-card-value" data-value="cost">$67.84</p>
+                            </div>
+                        </div>
+                        <div class="simulation-card-summary">
+                            <p class="simulation-card-summary-label">SIMULATED USAGE</p>
+                            <p><span>Current Bill (estimate)</span><strong data-value="bill">$52.31</strong></p>
+                            <p><span>Current Usage</span><strong data-value="currentUsage">36 therms</strong></p>
+                            <p><span>Projected Usage</span><strong data-value="projected">-5.4%</strong></p>
+                            <p><span data-value="savingsLabel">Money Saved</span><strong data-value="savings">$0.00</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-W6q/7H4fJwTlaBDFKkkV7j5fD1K3lF7QJjZ0JfY9aeOa+9Y7bDQwMxGFaN8KI2AZ"
         crossorigin="anonymous"></script>
     <script src="transition.js" defer></script>
+    <script src="simulation.js" defer></script>
 </body>
 
 </html>

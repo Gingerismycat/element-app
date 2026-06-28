@@ -421,6 +421,12 @@
             background: linear-gradient(90deg, #6e6e6e 0%, #adadad 100%);
             border-radius: 999px;
         }
+        .dashboard-card .goal-fill-fail {
+            height: 100%;
+            width: 72%;
+            background: linear-gradient(90deg, #ff2121 0%, #ff4e4e 100%);
+            border-radius: 999px;
+        }
 
         .dashboard-card .goal-label {
             margin-top: 0.8rem;
@@ -818,7 +824,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 gx-5 gy-5">
                     <div class="col">
                         <div class="card dashboard-card water h-100 shadow-sm">
-                            <img src="assets/water-sad.gif" class="card-img-top" alt="Water">
+                            <img src="assets/water-happy.gif" class="card-img-top" alt="Water">
                             <div class="card-body">
                                 <h5 class="card-title">Water</h5>
                                 <p class="card-text mb-0">Track water usage and key consumption categories across your
@@ -832,10 +838,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">Usage Breakdown</h5>
                                 <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                    <li>Showers — 40%</li>
-                                    <li>Toilets — 30%</li>
-                                    <li>Kitchen — 25%</li>
-                                    <li>Faucet — 5%</li>
+                                    <li>Toilets — 24%</li>
+                                    <li>Shower — 20%</li>
+                                    <li>Faucet — 20%</li>
+                                    <li>Washing Machine — 16%</li>
+                                    <li>Other — 20%</li>
                                 </ul>
                             </div>
                         </div>
@@ -844,9 +851,9 @@
                         <div class="card dashboard-card water h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">This Month</h5>
-                                <p class="mb-2">120,000 Gallons</p>
-                                <p class="mb-1">Estimated Bill: <strong>$78</strong></p>
-                                <p class="mb-0 text-danger">12% more than last month</p>
+                                <p class="mb-2">4,000 Gallons</p>
+                                <p class="mb-1">Estimated Bill: <strong>$93.60</strong></p>
+                                <p class="mb-0 text-success">8% less than last month</p>
                             </div>
                         </div>
                     </div>
@@ -854,13 +861,12 @@
                         <div class="card dashboard-card water h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Conservation Goals</h5>
-                                <p class="mb-2">Monthly Target: <strong>4,000 gal</strong></p>
-                                <p class="mb-0">680 Gallons Remaining</p>
+                                <p class="mb-2">Monthly Target: <strong>4,500 gal</strong></p>
+                                <p class="mb-0">500 Gallons Remaining</p>
                                 <div class="goal-bar">
-                                    <div class="goal-fill-water" style="width: 72%;"></div>
+                                    <div class="goal-fill-water" style="width: 89%;"></div>
                                 </div>
-                                <p class="goal-label mb-0">Progress toward goal</p>
-                                <p class="progress-meta mb-0">72% complete</p>
+                                <p class="goal-label mb-0">11% from Monthly Limit</p>
                             </div>
                         </div>
                     </div>
@@ -880,10 +886,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">Usage Breakdown</h5>
                                 <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                    <li>AC — 50%</li>
-                                    <li>Lighting — 22%</li>
-                                    <li>Electronics — 20%</li>
-                                    <li>Other — 8%</li>
+                                    <li>AC — 54%</li>
+                                    <li>Water Heating — 16%</li>
+                                    <li>Refrigeration — 4%</li>
+                                    <li>Lighting — 4%</li>
+                                    <li>Appliances — 12%</li>
+                                    <li>Electronics — 10%</li>
                                 </ul>
                             </div>
                         </div>
@@ -892,9 +900,9 @@
                         <div class="card dashboard-card electricity h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">This Month</h5>
-                                <p class="mb-2">842 kWh</p>
-                                <p class="mb-1">Estimated Bill: <strong>$126.40</strong></p>
-                                <p class="mb-0 text-success">8% less than last month</p>
+                                <p class="mb-2">855 kWh</p>
+                                <p class="mb-1">Estimated Bill: <strong>$128.25</strong></p>
+                                <p class="mb-0 text-success">6% less than last month</p>
                             </div>
                         </div>
                     </div>
@@ -902,13 +910,12 @@
                         <div class="card dashboard-card electricity h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Conservation Goals</h5>
-                                <p class="mb-2">Monthly Target: <strong>740 kWh</strong></p>
-                                <p class="mb-0">194 kWh Remaining</p>
+                                <p class="mb-2">Monthly Target: <strong>980 kWh</strong></p>
+                                <p class="mb-0">88 kWh Remaining</p>
                                 <div class="goal-bar">
-                                    <div class="goal-fill-electricity" style="width: 62%;"></div>
+                                    <div class="goal-fill-electricity" style="width: 91%;"></div>
                                 </div>
-                                <p class="goal-label mb-0">Progress toward goal</p>
-                                <p class="progress-meta mb-0">62% complete</p>
+                                <p class="goal-label mb-0">9% from Monthly Limit</p>
                             </div>
                         </div>
                     </div>
@@ -926,10 +933,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">Usage Breakdown</h5>
                                 <ul class="list-unstyled mb-0" style="font-size: 1rem; line-height: 1.6;">
-                                    <li>Furnace — 68%</li>
-                                    <li>Stove/Oven — 12%</li>
-                                    <li>Water Heater — 15%</li>
-                                    <li>Gas Dryer — 5%</li>
+                                    <li>Heating — 88%</li>
+                                    <li>Hot Water — 9%</li>
+                                    <li>Cooking — 3%</li>
                                 </ul>
                             </div>
                         </div>
@@ -938,9 +944,9 @@
                         <div class="card dashboard-card gas h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">This Month</h5>
-                                <p class="mb-2">445 Therms</p>
-                                <p class="mb-1">Estimated Bill: <strong>$68.42</strong></p>
-                                <p class="mb-0 text-danger">5% more than last month</p>
+                                <p class="mb-2">36 Therms</p>
+                                <p class="mb-1">Estimated Bill: <strong>$5.54</strong></p>
+                                <p class="mb-0 text-danger">10% more than last month</p>
                             </div>
                         </div>
                     </div>
@@ -948,13 +954,12 @@
                         <div class="card dashboard-card gas h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Conservation Goals</h5>
-                                <p class="mb-2">Monthly Target: <strong>87 therms</strong></p>
-                                <p class="mb-0">45 therms Remaining</p>
+                                <p class="mb-2">Monthly Target: <strong>35 Therms</strong></p>
+                                <p class="mb-0">0 Therms Remaining</p>
                                 <div class="goal-bar">
-                                    <div class="goal-fill-gas" style="width: 48%;"></div>
+                                    <div class="goal-fill-fail" style="width: 100%;"></div>
                                 </div>
-                                <p class="goal-label mb-0">Progress toward goal</p>
-                                <p class="progress-meta mb-0">48% complete</p>
+                                <p class="goal-label mb-0 text-danger">Surpassed Monthly Limit</p>
                             </div>
                         </div>
                     </div>
@@ -1134,7 +1139,7 @@
                         <div class="simulation-card-info">
                             <div>
                                 <p class="simulation-card-label">Gas</p>
-                                <p class="simulation-card-value" data-value="usage">48 therms</p>
+                                <p class="simulation-card-value" data-value="usage">48 Therms</p>
                             </div>
                             <div class="simulation-card-metric">
                                 <p class="simulation-card-label">Estimated Cost</p>
@@ -1143,8 +1148,8 @@
                         </div>
                         <div class="simulation-card-summary">
                             <p class="simulation-card-summary-label">SIMULATED USAGE</p>
-                            <p><span>Current Bill (estimate)</span><strong data-value="bill">$52.31</strong></p>
-                            <p><span>Current Usage</span><strong data-value="currentUsage">36 therms</strong></p>
+                            <p><span>Current Bill (Estimate)</span><strong data-value="bill">$52.31</strong></p>
+                            <p><span>Current Usage</span><strong data-value="currentUsage">36 Therms</strong></p>
                             <p><span>Projected Usage</span><strong data-value="projected">-5.4%</strong></p>
                             <p><span data-value="savingsLabel">Money Saved</span><strong data-value="savings">$0.00</strong></p>
                         </div>
